@@ -54,7 +54,7 @@ class InteractiveRecord
   end 
   
   def self.find_by(attribute)
-    sql = attribute.each{|key, value| "#{selecting} WHERE #{key} = #{value}"}
+    sql = attribute.map{|key, value| "#{selecting} WHERE #{key} = #{value}"}[0]
     DB[:conn].execute(sql)
   end 
   
